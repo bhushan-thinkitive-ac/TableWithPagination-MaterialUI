@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import{ useState } from 'react';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
   TablePagination, Paper, Typography, Box, useMediaQuery
@@ -10,7 +10,7 @@ const TableWithPagination = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Sample data
-  const rows = Array.from({ length: 100 }, (_, index) => ({
+  const rows = Array.from({ length: 10000  }, (_, index) => ({
     name: `${index + 1}`,
     description: `Description for item ${index + 1}`,
     status: `Active`

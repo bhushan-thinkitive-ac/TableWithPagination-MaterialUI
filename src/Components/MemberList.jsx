@@ -24,9 +24,9 @@ const MemberList = ({ membersData }) => {
     return (
         <Container>
             {/* Dashboard and Search Bar */}
-            <Grid2 container spacing={2} sx={{ mb: 6, borderRadius: '5px' }}>
+            <Grid2 container spacing={73} sx={{ mb: 6, borderRadius: '5px' }}>
                 <Grid2 item xs={12} sm={4} md={3} lg={2}>
-                    <Typography variant="h5" sx={{ fontFamily: 'initial', fontWeight: 'bold' }}>
+                    <Typography variant="h6" sx={{ fontFamily: 'sans-serif', fontWeight: 'bold' }}>
                         Dashboard
                     </Typography>
                 </Grid2>
@@ -44,7 +44,7 @@ const MemberList = ({ membersData }) => {
                         <IconButton type="submit" aria-label="search" sx={{ marginRight: 2 }}>
                             <SearchIcon style={{ fill: "blue" }} />
                         </IconButton>
-                        <FormControl size="small" sx={{ minWidth: 120 }}>
+                        <FormControl size="small" sx={{ minWidth: 100 }}>
                             <InputLabel id="filter-label">Filter By</InputLabel>
                             <Select
                                 labelId="filter-label"
@@ -60,9 +60,23 @@ const MemberList = ({ membersData }) => {
                         </FormControl>
                     </form>
                 </Grid2>
+
             </Grid2>
 
-            <Grid2 container spacing={2}>
+            <Grid2 container spacing={5}>
+                <Grid2 container spacing={53} >
+                    <Grid2 container spacing={18.5}>
+                        <Typography variant="h6" sx={{ mb: 1, mt: 3 }}>
+                            Member Details
+                        </Typography>
+                        <Typography variant="h6" sx={{ mb: 1, mt: 3 }}>
+                            Recent Measurements
+                        </Typography>
+                    </Grid2>
+                    <Typography variant="h6" sx={{ mb: 1, mt: 3 }}>
+                        Actions
+                    </Typography>
+                </Grid2>
                 {membersData.map((memberData, index) => (
                     <MemberRow
                         key={index}

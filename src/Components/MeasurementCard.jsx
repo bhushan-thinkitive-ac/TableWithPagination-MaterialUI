@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 
 const MeasurementCard = ({ title, value, unit, date, icon: IconComponent }) => {
   return (
-    <Card sx={{ width: 210, height: 100, overflow: 'hidden' }}>
+    <Card sx={{ width: 150, height: 80, overflow: 'hidden' }}>
       <CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 0 }}>
-          {IconComponent && <IconComponent sx={{ fontSize: 60, marginRight: 5 }} />}
-          <Typography variant="h6" component="div" noWrap>
+          {IconComponent && <IconComponent sx={{ fontSize: 20, marginRight: 5 }} />}
+          <Typography  component="div" noWrap>
             {title}
           </Typography>
         </Box>
-        <Typography variant="h6" component="div" color={value < 100 ? "error" : "primary"}>
+        <Typography component="div" color={value < 100 ? "error" : "primary"}>
           {value} {unit}
         </Typography>
-        <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 8 }} color="text.secondary" gutterBottom>
           {date}
         </Typography>
       </CardContent>

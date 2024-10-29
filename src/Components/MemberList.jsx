@@ -8,11 +8,16 @@ import {
     Select,
     FormControl,
     InputLabel,
+    Button,
+    Box,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import MemberRow from './MemberRow';
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from 'react';
+import { FaDownload } from 'react-icons/fa';
+import { AiOutlinePlus } from 'react-icons/ai';
+
 
 const MemberList = ({ membersData }) => {
     const [filter, setFilter] = useState('');
@@ -24,7 +29,7 @@ const MemberList = ({ membersData }) => {
     return (
         <Container>
             {/* Dashboard and Search Bar */}
-            <Grid2 container spacing={23} sx={{ mb: 6, borderRadius: '5px' }} marginTop={2} paddingBottom={0}>
+            <Grid2 container spacing={18} sx={{ mb: 6, borderRadius: '5px' }} marginTop={2} paddingBottom={0}>
                 <Grid2 item xs={12} sm={4} md={3} lg={2}>
                     <Typography variant="h6" sx={{ fontFamily: 'sans-serif', fontWeight: 'bold' }}>
                         Dashboard
@@ -61,10 +66,38 @@ const MemberList = ({ membersData }) => {
                     </form>
                 </Grid2>
 
-                <Grid2>
-                    <Typography variant="h6" sx={{ fontFamily: 'sans-serif', fontWeight: 'bold' }}>
-                        Member List
-                    </Typography>
+                {/* Export and Add New Entry Buttons */}
+                <Grid2 item xs={12} sm={8} md={6} lg={5}>
+                    <Box display="flex" justifyContent="flex-end" alignItems="center" gap={1}>
+                        <Button
+                            type="submit"
+                            sx={{
+                                fontSize: 12,
+                                padding: '4px 16px',
+                                border: '2px solid #1a62ba',
+                                color: '#1a62ba',
+                                textTransform: 'uppercase',
+                            }}
+                            startIcon={<FaDownload />}
+                        >
+                            Export
+                        </Button>
+                        <Button
+                            type="submit"
+                            sx={{
+                                fontSize: 12,
+                                padding: '4px 16px',
+                                border: '2px solid lightblue',
+                                backgroundColor: '#1a62ba',
+                                color: 'white',
+                                textTransform: 'uppercase',
+                            }}
+                            startIcon={<AiOutlinePlus />}
+
+                        >
+                            Add new entry
+                        </Button>
+                    </Box>
                 </Grid2>
             </Grid2>
 

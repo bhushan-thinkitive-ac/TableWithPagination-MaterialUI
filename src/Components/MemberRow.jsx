@@ -4,27 +4,27 @@ import MeasurementCard from './MeasurementCard';
 import CallIcon from '@mui/icons-material/Call';
 import MessageIcon from '@mui/icons-material/Message';
 
-const MemberRow = ({ member, measurements, showActions }) => {
+const MemberRow = ({ member, measurements }) => {
     return (
-        <Grid container spacing={2} sx={{ mb: 2, padding: 2, backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
+        <Grid container sx={{ padding: 1, borderRadius: '8px' }}>
             {/* Member Details */}
             <Grid item xs={12} sm={3}>
                 <Box sx={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-                    <Avatar src={member.avatar} alt={member.name} sx={{ mr: 2, width: 48, height: 48 }} />
+                    <Avatar src={member.avatar} alt={member.name} sx={{ mr: 2, width: 38, height: 38 }} />
                     <Box>
-                        <Typography variant="h6">{member.name}</Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {member.gender} | {member.age} Years
+                        <Typography variant="h6" fontFamily={'Segoe UI'} fontSize={16}>{member.name}</Typography>
+                        <Typography color="text.secondary" fontFamily={'Segoe UI'} fontSize={14}>
+                            {member.id} | {member.gender} | {member.age} Years
                         </Typography>
                     </Box>
                 </Box>
             </Grid>
 
             {/* Measurements */}
-            <Grid item xs={12} sm={6}>
-                <Grid container spacing={1}>
+            <Grid item xs={12} sm={5}>
+                <Grid container spacing={3}>
                     {measurements.map((measurement, index) => (
-                        <Grid item key={index} xs={6} sm={4}>
+                        <Grid item key={index} xs={6} sm={4} >
                             <MeasurementCard
                                 title={measurement.title}
                                 value={measurement.value}
@@ -38,37 +38,46 @@ const MemberRow = ({ member, measurements, showActions }) => {
                 </Grid>
             </Grid>
 
-            {/* Action & Review Status Section */}
-            {showActions && (
-                <Grid item xs={12} sm={3} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                        <Button
-                            color="secondary"
-                            size="small"
-                            startIcon={<MessageIcon />}
-                            sx={{ minWidth: 25, padding: '2px 4px' }}
-                        />
-                        <Button
-                            color="secondary"
-                            size="small"
-                            startIcon={<CallIcon />}
-                            sx={{ minWidth: 25, padding: '2px 4px' }}
-                        />
-                    </Box>
-                    {/* Status Label */}
-                    <Chip
-                        label={member.status}
-                        color={member.status === 'Pending' ? 'warning' : member.status === 'Partially Reviewed' ? 'primary' : 'success'}
-                        variant="outlined"
-                        sx={{
-                            fontSize: '0.75rem',
-                            height: 24,
-                            width: 'fit-content',
-                        }}
+            {/* Action Section */}
+
+            <Grid item xs={12} sm={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', paddingLeft: 8 }}>
+                <Box>
+                    <Button
+                        color="secondary"
+                        size="small"
+                        startIcon={<MessageIcon />}
+                        sx={{ minWidth: 15, padding: '2px 4px' }}
+                    />
+                    <Button
+                        color="secondary"
+                        size="small"
+                        startIcon={<CallIcon />}
+                        sx={{ minWidth: 15, padding: '2px 4px' }}
 
                     />
-                </Grid>
-            )}
+                </Box>
+
+            </Grid>
+
+            {/* Review Status */}
+            <Grid item xs={12} sm={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Chip
+                    label={member.status}
+                    color={
+                        member.status === 'Pending'
+                            ? 'warning'
+                            : member.status === 'Partially Reviewed'
+                                ? 'primary'
+                                : 'success'
+                    }
+                    variant="outlined"
+                    sx={{
+                        fontSize: '0.75rem',
+                        height: 24,
+                        width: 'fit-content',
+                    }}
+                />
+            </Grid>
         </Grid>
     );
 };
@@ -76,11 +85,12 @@ const MemberRow = ({ member, measurements, showActions }) => {
 // Add PropTypes validation
 MemberRow.propTypes = {
     member: PropTypes.shape({
+        id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         gender: PropTypes.string.isRequired,
         age: PropTypes.number.isRequired,
-        avatar: PropTypes.string, // Optional
-        status: PropTypes.string.isRequired, // Status for the member row
+        avatar: PropTypes.string, // Optional for the icon component
+        status: PropTypes.string.isRequired, // Status for the review column
     }).isRequired,
     measurements: PropTypes.arrayOf(
         PropTypes.shape({

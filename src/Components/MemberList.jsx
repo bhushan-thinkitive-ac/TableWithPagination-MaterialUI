@@ -24,7 +24,7 @@ const MemberList = ({ membersData }) => {
     return (
         <Container>
             {/* Dashboard and Search Bar */}
-            <Grid2 container spacing={73} sx={{ mb: 6, borderRadius: '5px' }}>
+            <Grid2 container spacing={23} sx={{ mb: 6, borderRadius: '5px' }} marginTop={2} paddingBottom={0}>
                 <Grid2 item xs={12} sm={4} md={3} lg={2}>
                     <Typography variant="h6" sx={{ fontFamily: 'sans-serif', fontWeight: 'bold' }}>
                         Dashboard
@@ -61,22 +61,32 @@ const MemberList = ({ membersData }) => {
                     </form>
                 </Grid2>
 
+                <Grid2>
+                    <Typography variant="h6" sx={{ fontFamily: 'sans-serif', fontWeight: 'bold' }}>
+                        Member List
+                    </Typography>
+                </Grid2>
             </Grid2>
 
-            <Grid2 container spacing={5}>
-                <Grid2 container spacing={53} >
-                    <Grid2 container spacing={18.5}>
-                        <Typography variant="h6" sx={{ mb: 1, mt: 3 }}>
+            {/* Heading Row with Light Gray Background */}
+            <Grid2 container spacing={2} sx={{ backgroundColor: '#f0f0f0', padding: 2, paddingTop: 0, marginBottom: 2, height: 60, borderRadius: '8px' }}>
+                <Grid2 container spacing={48} >
+                    <Grid2 container spacing={21}>
+                        <Typography variant="h6" sx={{ mb: 1, mt: 3 }} fontFamily={'Segoe UI'} fontSize={16}>
                             Member Details
                         </Typography>
-                        <Typography variant="h6" sx={{ mb: 1, mt: 3 }}>
+                        <Typography variant="h6" sx={{ mb: 1, mt: 3 }} fontFamily={'Segoe UI'} fontSize={16}>
                             Recent Measurements
                         </Typography>
                     </Grid2>
-                    <Typography variant="h6" sx={{ mb: 1, mt: 3 }}>
-                        Actions
+                    <Typography variant="h6" sx={{ mb: 1, mt: 3 }} fontFamily={'Segoe UI'} fontSize={16}>
+                        Actions & Reviews
                     </Typography>
                 </Grid2>
+            </Grid2>
+
+            {/* Member Rows */}
+            <Grid2 container spacing={1}>
                 {membersData.map((memberData, index) => (
                     <MemberRow
                         key={index}
